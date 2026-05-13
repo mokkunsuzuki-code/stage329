@@ -1,74 +1,78 @@
-# Stage329: Audit Artifact Package
+# Stage329: Audit Submission Artifact
 
 Stage329 converts the Stage328 verification decision into a submit-ready audit evidence package.
 
-## Core Concept
+## Position
 
-AI Claim
-↓
-Reproduction Evidence
-↓
-QSP Decision
-↓
-Signed Audit Report
+Stage327: Evidence Structuring  
+Stage328: Evidence Verification  
+Stage329: Evidence Submission / Audit Packaging  
 
-## What Stage329 Adds
+## Core Flow
 
-Stage328 produced a verification decision:
+AI Claim  
+↓  
+Reproduction Evidence  
+↓  
+QSP Decision  
+↓  
+Signed Audit Report  
 
-- accept
-- pending
-- reject
+## What Stage329.1 Adds
 
-Stage329 turns that decision into audit artifacts that can be submitted, reviewed, stored, and verified by third parties.
+This version strengthens Stage329 with:
 
-## Generated Artifacts
+1. Automatic loading of `stage328_decision.json`
+2. GitHub Pages-ready audit report URL
+3. Audit trace display
+4. Submit-ready UI for third-party review
 
-- audit_report.json
-- audit_report.html
-- audit_report.pdf
-- verify.txt
-- audit_report.sha256
-- audit_report.json.asc
+## Public Audit Artifacts
 
-## Why This Matters
+Generated under:
 
-A decision alone is not enough for real-world audit use.
+```text
+docs/reports/
 
-Enterprises, auditors, governments, and financial institutions need:
+Files:
 
-- evidence package
-- verification trace
-- signed report
-- machine-readable JSON
-- human-readable HTML
-- PDF report
-- verification instructions
+audit_report.html
+audit_report.json
+audit_report.json.asc
+audit_report.sha256
+verify.txt
+Third-party Verification
+shasum -a 256 docs/reports/audit_report.json
 
-Stage329 moves REMEDA from verification decision to audit submission.
-
-## Security Boundary
+gpg --verify docs/reports/audit_report.json.asc docs/reports/audit_report.json
+Security Boundary
 
 The private core logic is not published.
 
 Excluded from GitHub:
 
-- core/
-- engine/
-- private/
-- secrets/
-- keys/
-- .env
-- private keys
+core/
+engine/
+private/
+secrets/
+keys/
+.env
+private keys
 
 Only public audit artifacts and verification instructions are published.
 
-## Verify
+Why This Matters
 
-```bash
-shasum -a 256 docs/reports/audit_report.json
+A verification decision alone is not enough for real-world audit use.
 
-gpg --verify docs/reports/audit_report.json.asc docs/reports/audit_report.json
+Stage329 turns a QSP/VEP verification decision into an audit artifact that can be:
+
+submitted
+reviewed
+archived
+verified
+signed
+referenced by URL
 License
 
 MIT License
