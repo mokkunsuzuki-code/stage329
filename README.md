@@ -4,13 +4,13 @@ Stage329 converts the Stage328 verification decision into a submit-ready audit e
 
 ## Core Concept
 
-AI Claim  
-↓  
-Reproduction Evidence  
-↓  
-QSP Decision  
-↓  
-Signed Audit Report  
+AI Claim
+↓
+Reproduction Evidence
+↓
+QSP Decision
+↓
+Signed Audit Report
 
 ## What Stage329 Adds
 
@@ -24,12 +24,12 @@ Stage329 turns that decision into audit artifacts that can be submitted, reviewe
 
 ## Generated Artifacts
 
-- `audit_report.json`
-- `audit_report.html`
-- `audit_report.pdf`
-- `verify.txt`
-- `audit_report.sha256`
-- `audit_report.json.asc`
+- audit_report.json
+- audit_report.html
+- audit_report.pdf
+- verify.txt
+- audit_report.sha256
+- audit_report.json.asc
 
 ## Why This Matters
 
@@ -53,12 +53,12 @@ The private core logic is not published.
 
 Excluded from GitHub:
 
-- `core/`
-- `engine/`
-- `private/`
-- `secrets/`
-- `keys/`
-- `.env`
+- core/
+- engine/
+- private/
+- secrets/
+- keys/
+- .env
 - private keys
 
 Only public audit artifacts and verification instructions are published.
@@ -67,8 +67,10 @@ Only public audit artifacts and verification instructions are published.
 
 ```bash
 shasum -a 256 docs/reports/audit_report.json
+
 gpg --verify docs/reports/audit_report.json.asc docs/reports/audit_report.json
 License
 
 MIT License
+
 Copyright (c) 2025 Motohiro Suzuki
