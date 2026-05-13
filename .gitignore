@@ -1,0 +1,24 @@
+# private core
+core/
+engine/
+private/
+secrets/
+keys/
+*.key
+*.pem
+*.p12
+*.pfx
+.env
+
+# python
+.venv/
+__pycache__/
+*.pyc
+
+# local database
+*.db
+*.sqlite
+*.sqlite3
+
+# mac
+.DS_Store

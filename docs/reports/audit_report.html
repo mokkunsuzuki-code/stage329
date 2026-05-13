@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stage329 Audit Artifact Package</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 40px; background: #f6f8fa; color: #111; }
+    .card { background: white; border: 1px solid #d0d7de; border-radius: 14px; padding: 24px; max-width: 900px; }
+    .badge { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #dafbe1; color: #116329; font-weight: 700; }
+    pre { background: #0d1117; color: #c9d1d9; padding: 16px; border-radius: 10px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Stage329 Audit Artifact Package</h1>
+    <p><span class="badge">READY FOR AUDIT SUBMISSION</span></p>
+    <h2>Flow</h2>
+    <p>AI Claim → Reproduction Evidence → QSP Decision → Signed Audit Report</p>
+    <h2>Decision</h2>
+    <p><strong>accept</strong></p>
+    <h2>Report SHA256</h2>
+    <pre>cc10d4c02bda79f06db24ec1322a281fa8141218145ba21f06d16db166c714e0</pre>
+    <h2>Verification</h2>
+    <pre>shasum -a 256 audit_report.json
+gpg --verify audit_report.json.sig audit_report.json</pre>
+  </div>
+</body>
+</html>

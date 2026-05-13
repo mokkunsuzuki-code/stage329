@@ -1,0 +1,27 @@
+{
+  "audit_artifacts": {
+    "html": "audit_report.html",
+    "json": "audit_report.json",
+    "pdf": "audit_report.pdf",
+    "verify": "verify.txt"
+  },
+  "created_at": "2026-05-13T05:38:31.491684+00:00",
+  "flow": [
+    "AI Claim",
+    "Reproduction Evidence",
+    "QSP Decision",
+    "Signed Audit Report"
+  ],
+  "license": "MIT",
+  "name": "Stage329 Audit Artifact Package",
+  "purpose": "Convert Stage328 verification decisions into submit-ready audit evidence.",
+  "stage": 329,
+  "stage328_decision": {
+    "decision": "accept",
+    "evidence_files_present": true,
+    "same_target": true,
+    "sha256_bound": true,
+    "signature_present": true
+  },
+  "submission_status": "ready_for_third_party_review"
+}

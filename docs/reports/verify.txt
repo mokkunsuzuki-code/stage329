@@ -1,0 +1,22 @@
+Stage329 Audit Artifact Verification
+
+1. Recalculate SHA256:
+   shasum -a 256 audit_report.json
+
+2. Expected SHA256:
+   cc10d4c02bda79f06db24ec1322a281fa8141218145ba21f06d16db166c714e0
+
+3. Verify signature if audit_report.json.sig exists:
+   gpg --verify audit_report.json.sig audit_report.json
+
+4. Meaning:
+   This package converts the Stage328 verification decision into a submit-ready audit artifact.
+
+Flow:
+AI Claim
+↓
+Reproduction Evidence
+↓
+QSP Decision
+↓
+Signed Audit Report
