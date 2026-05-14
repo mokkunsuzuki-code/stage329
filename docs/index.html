@@ -16,9 +16,9 @@
     .secondary { background: #57606a !important; }
     .green { background: #1a7f37 !important; }
     pre { background: #0d1117; color: #c9d1d9; padding: 16px; border-radius: 12px; overflow-x: auto; white-space: pre-wrap; }
-    .accept { background: #dafbe1; color: #116329; border: 1px solid #4ac26b; }
-    .pending { background: #fff8c5; color: #7d4e00; border: 1px solid #d4a72c; }
-    .reject { background: #ffebe9; color: #82071e; border: 1px solid #ff8182; }
+    .受け入れ { background: #dafbe1; color: #116329; border: 1px solid #4ac26b; }
+    .保留 { background: #fff8c5; color: #7d4e00; border: 1px solid #d4a72c; }
+    .拒否 { background: #ffebe9; color: #82071e; border: 1px solid #ff8182; }
     .badge { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #dafbe1; color: #116329; font-weight: 700; }
     code { background: #f6f8fa; padding: 2px 6px; border-radius: 6px; }
   </style>
@@ -39,11 +39,11 @@
     </p>
     <pre>AI Claim
 ↓
-Reproduction Evidence
+再現証拠
 ↓
 Stage328 Evidence Match Gate
 ↓
-accept / pending / reject
+受け入れ / 保留 / 拒否
 ↓
 Stage329 Signed Audit Report</pre>
   </section>
@@ -62,7 +62,7 @@ Stage329 Signed Audit Report</pre>
 
       <label>Vulnerability Type</label>
       <select id="vulnerability_type">
-        <option>prompt-injection</option>
+        <option>プロンプトインジェクション</option>
         <option>data-leakage</option>
         <option>unsafe-output</option>
         <option>policy-bypass</option>
@@ -70,7 +70,7 @@ Stage329 Signed Audit Report</pre>
 
       <label>Target</label>
       <select id="target">
-        <option>model-output</option>
+        <option>モデル出力</option>
         <option>repository</option>
         <option>api-response</option>
       </select>
@@ -95,32 +95,32 @@ Stage329 Signed Audit Report</pre>
     </div>
 
     <div class="card">
-      <h2>Reproduction Evidence</h2>
+      <h2>再現証拠</h2>
 
-      <label>Reproduction ID</label>
+      <label>再現ID</label>
       <input id="reproduction_id" value="repro-001">
 
-      <label>Reproduction Repository</label>
+      <label>再現リポジトリ</label>
       <input id="repro_repository" value="demo/repository">
 
-      <label>Reproduction Commit</label>
+      <label>再現コミット</label>
       <input id="repro_commit" value="abc123demo">
 
-      <label>Reproduction File</label>
+      <label>再現ファイル</label>
       <input id="repro_file" value="src/auth.py">
 
-      <label>Reproduction Line Range</label>
+      <label>再現ライン範囲</label>
       <input id="repro_line_range" value="40-55">
 
       <label>Result</label>
       <select id="result_status">
-        <option>reproduced</option>
+        <option>再現済み</option>
         <option>partial</option>
         <option>inconclusive</option>
       </select>
 
-      <label>Reproduction Note</label>
-      <textarea id="reproduction_note">Safely reproduced under isolated conditions.</textarea>
+      <label>再現メモ</label>
+      <textarea id="reproduction_note">隔離環境で安全に再現確認しました。</textarea>
 
       <label>Evidence Files</label>
       <textarea id="evidence_files">prompt.txt
@@ -148,7 +148,7 @@ run.log</textarea>
     <pre id="generated_json">Generated JSON appears here.</pre>
 
     <h2>Stage328 Gate Decision</h2>
-    <div id="decision_box" class="card pending">Gate decision appears here.</div>
+    <div id="decision_box" class="card 保留">Gate decision appears here.</div>
     <pre id="gate_decision">{}</pre>
   </section>
 
@@ -166,9 +166,9 @@ run.log</textarea>
 
   <section class="card">
     <h2>Decision Rules</h2>
-    <p><strong>accept:</strong> all checks are true</p>
-    <p><strong>pending:</strong> target/evidence exist but SHA256 or signature missing</p>
-    <p><strong>reject:</strong> target mismatch or evidence missing</p>
+    <p><strong>受け入れ:</strong> all checks are true</p>
+    <p><strong>保留:</strong> target/evidence exist but SHA256 or signature missing</p>
+    <p><strong>拒否:</strong> target mismatch or evidence missing</p>
   </section>
 
   <section class="card">
@@ -235,11 +235,11 @@ function generateStage328() {
   const sha256_bound = evidence.evidence_files.every(f => Boolean(evidence.sha256[f]));
   const signature_present = Boolean(evidence.signature_file);
 
-  let decision = "reject";
+  let decision = "拒否";
   if (same_target && evidence_files_present && sha256_bound && signature_present) {
-    decision = "accept";
+    decision = "受け入れ";
   } else if (same_target && evidence_files_present) {
-    decision = "pending";
+    decision = "保留";
   }
 
   const stage328 = {
