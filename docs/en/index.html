@@ -63,7 +63,7 @@ Stage329 Signed Audit Report</pre>
 
       <label>Vulnerability Type</label>
       <select id="vulnerability_type">
-        <option>プロンプトインジェクション</option>
+        <option>prompt-injection</option>
         <option>data-leakage</option>
         <option>unsafe-output</option>
         <option>policy-bypass</option>
@@ -110,7 +110,7 @@ Stage329 Signed Audit Report</pre>
       <label>Reproduction File</label>
       <input id="repro_file" value="src/auth.py">
 
-      <label>再現Line Range</label>
+      <label>Reproduction Line Range</label>
       <input id="repro_line_range" value="40-55">
 
       <label>Result</label>
@@ -148,7 +148,7 @@ run.log</textarea>
     <h2>Generated Stage328 JSON</h2>
     <pre id="generated_json" translate="no" class="notranslate">Generated JSON appears here.</pre>
 
-    <h2>Stage328 Gate判定</h2>
+    <h2>Stage328 Gate Decision</h2>
     <div id="decision_box" class="card pending">Gate decision appears here.</div>
     <pre id="gate_decision" translate="no" class="notranslate">{}</pre>
   </section>
@@ -167,9 +167,9 @@ run.log</textarea>
 
   <section class="card">
     <h2>Decision Rules</h2>
-    <p><strong>受け入れ:</strong> all checks are true</p>
-    <p><strong>保留:</strong> target/evidence exist but SHA256 or signature missing</p>
-    <p><strong>拒否:</strong> target mismatch or evidence missing</p>
+    <p><strong>accept:</strong> all checks are true</p>
+    <p><strong>pending:</strong> target/evidence exist but SHA256 or signature missing</p>
+    <p><strong>reject:</strong> target mismatch or evidence missing</p>
   </section>
 
   <section class="card">
