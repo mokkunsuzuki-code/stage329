@@ -236,11 +236,11 @@ function generateStage328() {
   const sha256_bound = evidence.evidence_files.every(f => Boolean(evidence.sha256[f]));
   const signature_present = Boolean(evidence.signature_file);
 
-  let decision = "拒否";
+  let decision = "reject";
   if (same_target && evidence_files_present && sha256_bound && signature_present) {
-    decision = "受け入れ";
+    decision = "accept";
   } else if (same_target && evidence_files_present) {
-    decision = "保留";
+    decision = "pending";
   }
 
   const stage328 = {
@@ -269,7 +269,10 @@ function generateStage328() {
 
   const box = document.getElementById("decision_box");
   box.className = "card " + decision;
-  box.textContent = "Decision: " + decision;
+  
+const labelMap = { accept: "受け入れ", pending: "保留", reject: "拒否" };
+box.textContent = "Decision: " + (labelMap[decision] || decision);
+
 }
 
 function downloadStage328Decision() {
