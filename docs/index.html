@@ -270,7 +270,7 @@ function generateStage328() {
   const box = document.getElementById("decision_box");
   box.className = "card " + decision;
   
-const labelMap = { accept: "受け入れ", pending: "保留", reject: "拒否" };
+const labelMap = { accept: "accept", pending: "pending", reject: "reject" };
 box.textContent = "Decision: " + (labelMap[decision] || decision);
 
 }
