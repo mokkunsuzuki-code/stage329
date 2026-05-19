@@ -1,12 +1,6 @@
-# Stage329: Audit Submission Artifact
+# REMEDA Stage329: Evidence Match Gate + Audit Submission Package
 
-Stage329 converts the Stage328 verification decision into a submit-ready audit evidence package.
-
-## Position
-
-Stage327: Evidence Structuring  
-Stage328: Evidence Verification  
-Stage329: Evidence Submission / Audit Packaging  
+Stage329 extends the Stage328 Evidence Match Gate into a submit-ready audit artifact workflow.
 
 ## Core Flow
 
@@ -14,65 +8,66 @@ AI Claim
 ↓  
 Reproduction Evidence  
 ↓  
-QSP Decision  
+Stage328 Evidence Match Gate  
 ↓  
-Signed Audit Report  
+accept / pending / reject  
+↓  
+Stage329 Signed Audit Report  
 
-## What Stage329.1 Adds
+## What Stage329 Adds
 
-This version strengthens Stage329 with:
+- Stage328 interactive verification page
+- Stage327 + Stage328 integrated builder
+- Machine-readable Stage328 decision JSON
+- Stage329 audit submission layer
+- Signed audit report
+- Audit JSON
+- Audit signature
+- Verification instructions
+- Japanese and English public pages
 
-1. Automatic loading of `stage328_decision.json`
-2. GitHub Pages-ready audit report URL
-3. Audit trace display
-4. Submit-ready UI for third-party review
+## Public Pages
 
-## Public Audit Artifacts
+Japanese:
 
-Generated under:
+https://mokkunsuzuki-code.github.io/stage329/
 
-```text
-docs/reports/
+English:
 
-Files:
+https://mokkunsuzuki-code.github.io/stage329/en/
 
-audit_report.html
-audit_report.json
-audit_report.json.asc
-audit_report.sha256
-verify.txt
-Third-party Verification
-shasum -a 256 docs/reports/audit_report.json
+## Public Verification Files
 
-gpg --verify docs/reports/audit_report.json.asc docs/reports/audit_report.json
-Security Boundary
+- `docs/index.html`
+- `docs/en/index.html`
+- `docs/reports/audit_report.html`
+- `docs/reports/audit_report.json`
+- `docs/reports/audit_report.json.asc`
+- `docs/reports/audit_report.sha256`
+- `docs/reports/verify.txt`
 
-The private core logic is not published.
+## Security Boundary
+
+Private core logic is not published.
 
 Excluded from GitHub:
 
-core/
-engine/
-private/
-secrets/
-keys/
-.env
-private keys
+- `core/`
+- `engine/`
+- `private/`
+- `secrets/`
+- `keys/`
+- `.env`
+- private keys
 
-Only public audit artifacts and verification instructions are published.
+Only public verification artifacts and audit submission files are published.
 
-Why This Matters
+## Verify
 
-A verification decision alone is not enough for real-world audit use.
+```bash
+shasum -a 256 docs/reports/audit_report.json
 
-Stage329 turns a QSP/VEP verification decision into an audit artifact that can be:
-
-submitted
-reviewed
-archived
-verified
-signed
-referenced by URL
+gpg --verify docs/reports/audit_report.json.asc docs/reports/audit_report.json
 License
 
 MIT License
